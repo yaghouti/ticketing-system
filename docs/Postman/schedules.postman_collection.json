@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "959510a0-4a2b-4b21-9ae2-fcb1f791b39e",
+		"name": "schedules",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save Schedule",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"start\": \"1398/6/31\",\n    \"end\": \"1398/08/5\",\n    \"weeklySchedule\": {\n        \"sat\": [\n            {\n                \"start\": \"9:0\",\n                \"end\": \"10:4\"\n            },\n            {\n                \"start\": \"21:30\",\n                \"end\": \"23:59\"\n            }\n        ],\n        \"sun\": [\n            {\n                \"start\": \"10:0\",\n                \"end\": \"11:4\"\n            }\n        ],\n        \"mon\": [\n            {\n                \"start\": \"00:10\",\n                \"end\": \"3:59\"\n            }\n        ],\n        \"tue\": [\n            {\n                \"start\": \"10:0\",\n                \"end\": \"11:4\"\n            }\n        ],\n        \"wed\": [\n            {\n                \"start\": \"10:0\",\n                \"end\": \"11:4\"\n            }\n        ],\n        \"thu\": [\n            {\n                \"start\": \"10:0\",\n                \"end\": \"11:4\"\n            }\n        ],\n        \"fri\": []\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/schedules",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"schedules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Schedule",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{serverUrl}}/schedules/13980701/13981006",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"schedules",
+						"13980701",
+						"13981006"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

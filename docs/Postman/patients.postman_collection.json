@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "b26b25fa-6960-47fc-9705-1d9576c4062d",
+		"name": "patients",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Patient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"majid1\",\n\t\"password\": \"123\",\n\t\"name\": \"majid\",\n\t\"family\": \"yaghouti\",\n\t\"phone\": \"09151598034\",\n\t\"avatar\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAGYktHRAD/AP8A/6C9p5MAAAAJcEhZcwAACxMAAAsTAQCanBgAAAFCSURBVDjLpdM9S1xREAbgZy/X4CaE+LFgEklnWLSxtJGAfyCgbCOIRfqkyz+wSClEC0ELOyGF1WJjlcJSCfYiRtJF1PhFPrwWd0IOukbFac7MHM4778w7p1IUhftYpahW5/ASFWQocIAVLOBXi3cTeIPdHMMYwG8cow0P8RrtmG4B0IcRfM1wEsk1NPAO3yL3Ho9aAPyM8zgP6rCD1fCfYgo1dAezliPIkiD1T5NKJ/5jeeI/QT2qTkauie+3BXiFZfSgCxt4G6pcayntc5zhKOJ2vHCDpQCflSqM4gv68eEuAD+whXX/1KijEzP4hKGE7RWAtsQ/jPOBcqnGgt3zy7PLkyGlw/qT3J9iD8+ivbMAg/1MKR88TgD+Lk4tWpiPeBxLGIx4OsdH9GIzAWgq5cyUmzgbbTXQgW0sYrVy3+98AemDQ4qngPQBAAAAAElFTkSuQmCC\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/patients",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Patient",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"majid1\",\n    \"family\": \"yaghouti1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/patients/majid1",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients",
+						"majid1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read  Patient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/patients/majid1",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients",
+						"majid1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Patient",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/patients/majid3",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients",
+						"majid3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Patients",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"majid2\", \"majid3\"]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/patients",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Patients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/patients",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Medical Record of Patient",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/patients/majid1/medicalRecords/1",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients",
+						"majid1",
+						"medicalRecords",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Medical Record of Patient",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tests\": {\n\t\t\"mt1\": {\n\t\t\t\"f1\": \"1\",\n\t\t\t\"f2\": \"2\",\n\t\t\t\"f3\": \"3\"\n\t\t}\n\t},\n\t\"drugs\": {\n\t\t\"drug1\": \"1\",\n\t\t\"drug3\": \"3\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/patients/majid1/medicalRecords/8",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients",
+						"majid1",
+						"medicalRecords",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Medical Record",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tests\": [\"mt1\"],\n\t\"drugs\": {\n\t\t\"drug1\": \"\",\n\t\t\"drug3\": \"2\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/patients/majid1/medicalRecords",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients",
+						"majid1",
+						"medicalRecords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Medical Record of Patient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/patients/majid1/medicalRecords/5",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients",
+						"majid1",
+						"medicalRecords",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " Get Medical Records of Patient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/patients/majid1/medicalRecords",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"patients",
+						"majid1",
+						"medicalRecords"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a92549f7-f597-4bfd-9e74-a58fc8a834d8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "33d5d813-38f6-4921-b600-23477a339317",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

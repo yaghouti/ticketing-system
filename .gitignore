@@ -1,0 +1,4 @@
+.idea
+node_modules
+docs/*.pdf
+docs/*.mp4

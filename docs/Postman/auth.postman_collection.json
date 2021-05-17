@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "4dd86568-77b9-4821-a63d-0ec843c531be",
+		"name": "auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login Patient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\": \"Patient\",\n\t\"username\": \"majid1\",\n\t\"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "{{serverUrl}}/auth/login",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Doctor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\": \"Doctor\",\n\t\"username\": \"dr1\",\n\t\"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "{{serverUrl}}/auth/login",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Secretary",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\": \"Secretary\",\n\t\"username\": \"s1\",\n\t\"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "{{serverUrl}}/auth/login",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{serverUrl}}/auth/logout",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

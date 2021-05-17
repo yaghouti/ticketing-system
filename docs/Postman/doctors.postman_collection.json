@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "48b828af-3329-4593-b1b2-8e307a3879f0",
+		"name": "doctors",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Doctor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"dr2\",\n\t\"password\": \"123\",\n\t\"name\": \"majid\",\n\t\"family\": \"yaghouti\",\n\t\"specialties\": [\"sp1\", \"sp2\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/doctors",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"doctors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Doctor",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"majid2\",\n    \"family\": \"yaghouti2\",\n    \"password\": \"123\",\n    \"specialties\": [\"sp1\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/doctors/dr2",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"doctors",
+						"dr2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read  Doctor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/doctors/dr1",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"doctors",
+						"dr1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Doctor",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/doctors/dr5",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"doctors",
+						"dr5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Doctors",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"dr4\", \"dr5\"]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/doctors",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"doctors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Doctors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/doctors",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"doctors"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a92549f7-f597-4bfd-9e74-a58fc8a834d8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "33d5d813-38f6-4921-b600-23477a339317",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

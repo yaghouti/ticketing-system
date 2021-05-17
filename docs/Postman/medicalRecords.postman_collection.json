@@ -1,0 +1,27 @@
+{
+	"info": {
+		"_postman_id": "aee81b12-f204-41a0-b0f4-33effba04742",
+		"name": "medicalRecords",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Medical Records of logged in user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/medicalRecords",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"medicalRecords"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

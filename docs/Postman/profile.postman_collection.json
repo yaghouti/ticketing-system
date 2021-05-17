@@ -1,0 +1,27 @@
+{
+	"info": {
+		"_postman_id": "18d4a99f-6ddf-47fb-b87f-b44fe9cd7f35",
+		"name": "profile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Profile of logged in user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/profile",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"profile"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

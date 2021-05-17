@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "35d5bd42-8ddf-4259-b49e-c03c1b8ca5e9",
+		"name": "specialties",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Specialty",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"sp1\"\n}"
+				},
+				"url": {
+					"raw": "{{serverUrl}}/specialties",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"specialties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Specialty",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{serverUrl}}/specialties/sp3",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"specialties",
+						"sp3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Specialties",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"sp2\", \"sp4\"]"
+				},
+				"url": {
+					"raw": "{{serverUrl}}/specialties",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"specialties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Specialties",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/specialties",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"specialties"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a92549f7-f597-4bfd-9e74-a58fc8a834d8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "33d5d813-38f6-4921-b600-23477a339317",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
