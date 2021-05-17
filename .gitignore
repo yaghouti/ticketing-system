@@ -1,3 +1,4 @@
 .idea
 node_modules
-database
+docs/*.pdf
+docs/*.mp4

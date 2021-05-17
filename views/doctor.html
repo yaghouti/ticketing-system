@@ -1,0 +1,243 @@
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="js/doctor.js"></script>
+    <style>
+        th,
+        td,
+        body {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body class="direction:rtl !important">
+<div id="app">
+    <div
+            class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+    >
+        <h5 class="my-0 mr-md-auto font-weight-normal">سامانه نوبت‌دهی</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a v-for="item in menuList" class="btn btn-outline-primary" v-on:click="activateForm(item)" href="#">{{item.text}}</a>
+            <a class="btn btn-outline-primary" v-on:click="logout()" href="#">خروج</a>
+        </nav>
+    </div>
+
+    <div v-if="activeForm==='greeting'" class="pricing-header px-3 py-3 pt-md-12 pb-md-12 mx-auto text-center">
+        <h1 class="display-4">سلام {{profile.name + ' ' + profile.family}}!</h1>
+        <h1 class="display-4">به سامانه نوبت‌دهی خوش‌آمدید!</h1>
+        <p>
+            جهت تعریف یا ویرایش آزمایش‌ها، داروها، ثبت زمان‌های حضور و مشاهده‌ی پرونده‌ی پزشکی بیماران، گزینه‌ی مورد نظر
+            را از منوی بالا انتخاب نمایید.
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="card-deck mb-4 text-center">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal"></h4>
+                </div>
+                <div class="card-body">
+                    <div v-if="activeForm==='modifyTests'" class="container">
+                        <p id="modifyTest" class="lead">ایجاد/ویرایش آزمایش</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>نام آزمایش</th>
+                                <td><input type="text" v-model="modifyingTest.name"/></td>
+                            </tr>
+                            <tr v-for="(field, index) in modifyingTest.fields">
+                                <td>نام فیلد</td>
+                                <td><input type="text" v-model="modifyingTest.fields[index]"/></td>
+                            </tr>
+                            <Tr>
+                                <td colspan="2">
+                                    <button class="btn btn-success" v-on:click="addNewField()">فیلد جدید</button>
+                                </td>
+                                <td colspan="2">
+                                    <button class="btn btn-success" v-on:click="saveTest()">ذخیره آزمایش</button>
+                                </td>
+                            </Tr>
+                        </table>
+                        <p>آزمایش‌های موجود</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>نام آزمایش</th>
+                                <th>فیلدها</th>
+                                <th>عملیات</th>
+                            </tr>
+                            <tr v-for="(test, index) in tests">
+                                <td>{{test.name}}</td>
+                                <td>{{test.fields.join(', ')}}</td>
+                                <td>
+                                    <button class="btn btn-success"
+                                            v-on:click="modifyTest(test)">ویرایش
+                                    </button>
+                                    <button class="btn btn-success" v-on:click="removeTest(index)">حذف</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div v-if="activeForm==='modifyDrugs'" class="container">
+                        <p class="lead">ایجاد دارو</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>نام دارو</th>
+                                <td><input type="text" v-model="newDrug.name"/></td>
+                            </tr>
+                            <Tr>
+                                <td colspan="2">
+                                    <button class="btn btn-success" v-on:click="saveDrug()">ذخیره</button>
+                                </td>
+                            </Tr>
+                        </table>
+                        <p>داروهای موجود</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>نام دارو</th>
+                                <th>عملیات</th>
+                            </tr>
+                            <tr v-for="(drug, index) in drugs">
+                                <td>{{drug.name}}</td>
+                                <td>
+                                    <button class="btn btn-success" v-on:click="removeDrug(index)">حذف</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div v-if="activeForm==='patients'" class="container">
+                        <p class="lead">جستجوی بیمار</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>نام کاربری بیمار</td>
+                                <td><input type="text" v-model="search"/></td>
+                                <td>
+                                    <button class="btn btn-success" v-on:click="fetchRecords()">جستجو</button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-success" v-on:click="activateNewRecordForm()">ایجاد پرونده
+                                        جدید
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="newRecordForm" v-if="showNewRecordForm">
+                            <p class="lead">ایجاد پرونده‌ پزشکی</p>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>نام کاربری بیمار</td>
+                                    <td v-if="!newRecord.isEditing"><input type="text" v-model="newRecord.patient"/></td>
+                                    <td v-if="newRecord.isEditing">{{newRecord.patient}}</td>
+                                </tr>
+                                <tr>
+                                    <th>داروها</th>
+                                    <td>
+                                        <select v-if="!newRecord.isEditing" v-model="newRecord.newDrug">
+                                            <option v-for="drug in drugs" :value="drug.name">{{drug.name}}</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button v-if="!newRecord.isEditing" class="btn btn-success" v-on:click="addNewDrugToNewRecord()">افزودن
+                                            دارو
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr v-for="drug in newRecord.drugs">
+                                    <td> {{drug.name}}</td>
+                                    <td>مقدار مصرف: <input type="text" v-model="drug.value"/></td>
+                                </tr>
+                                <tr>
+                                    <th>آزمایش‌ها</th>
+                                    <td>
+                                        <select v-if="!newRecord.isEditing" v-model="newRecord.newTest">
+                                            <option v-for="test in tests" :value="test.name">{{test.name}}</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button v-if="!newRecord.isEditing" class="btn btn-success" v-on:click="addNewTestToNewRecord()">افزودن
+                                            آزمایش
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr v-for="test in newRecord.tests">
+                                    <td> {{test.name}}</td>
+                                    <td v-if="!newRecord.isEditing">فیلدها:
+                                        <span v-for="field in test.fields"><{{field.name}}></span>
+                                    </td>
+                                    <td v-if="newRecord.isEditing" v-for="field in test.fields">
+                                        {{field.name}}: <input type="text" v-model="field.value"/>
+                                    </td>
+                                </tr>
+                                <Tr>
+                                    <td colspan="2">
+                                        <button class="btn btn-success" v-on:click="saveNewRecord()">ذخیره</button>
+                                        <button class="btn btn-success" v-on:click="showNewRecordForm=false">انصراف</button>
+                                    </td>
+                                </Tr>
+                            </table>
+                        </div>
+                        <p class="lead">پرونده‌های پزشکی {{recordsFor}}</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>تاریخ</th>
+                                <th>بیمار</th>
+                                <th>داروها</th>
+                                <th>آزمایش‌ها</th>
+                                <th>عملیات</th>
+                            </tr>
+                            <tr v-for="(record, index) in orderedRecords">
+                                <td>{{record.date}}</td>
+                                <td>{{record.patient}}</td>
+                                <td>{{record.drugs}}</td>
+                                <td>{{record.tests}}</td>
+                                <td>
+                                    <button class="btn btn-success" v-on:click="editRecord(record)">ویرایش</button>
+                                    <button class="btn btn-success" v-on:click="removeRecord(index)">حذف</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div v-if="activeForm==='schedule'" class="container">
+                        <p class="lead">برنامه هفتگی</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td colspan="24">
+                                    از تاریخ:
+                                    <input type="text" v-model="schedule.start"/>
+                                    تا تاریخ:
+                                    <input type="text" v-model="schedule.end"/>
+                                    <button class="btn btn-success" v-on:click="saveSchedule()">ذخیره</button>
+                                </td>
+                            </tr>
+                            <tr v-for="(value, day) in schedule.weeklySchedule">
+                                <th v-bind:colspan="schedule.weeklySchedule[day].length">{{daysOfWeek[day]}}</th>
+                                <td v-bind:colspan="schedule.weeklySchedule[day].length" v-for="(item, index) in schedule.weeklySchedule[day]">
+                                    از ساعت:<input type="text" v-model="item.start"/>
+                                    <br/>
+                                    تا ساعت:<input type="text" v-model="item.end"/>
+                                    <br/>
+                                    <button class="btn btn-success" v-on:click="removePeriod(day, index)">حذف بازه</button>
+                                </td>
+                                <td v-bind:colspan="schedule.weeklySchedule[day].length">
+                                    <button class="btn btn-success" v-on:click="addPeriod(day)">بازه‌ی جدید</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            سامانه نوبت‌دهی
+        </footer>
+    </div>
+</div>
+</body>
+</html>

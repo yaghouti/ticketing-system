@@ -1,0 +1,142 @@
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="js/patient.js"></script>
+    <style>
+        th,
+        td,
+        body {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body class="direction:rtl !important">
+<div id="app">
+    <div
+            class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+    >
+        <h5 class="my-0 mr-md-auto font-weight-normal">سامانه نوبت‌دهی</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a v-for="item in menuList" class="btn btn-outline-primary" v-on:click="activateForm(item)" href="#">{{item.text}}</a>
+            <a class="btn btn-outline-primary" v-on:click="logout()" href="#">خروج</a>
+        </nav>
+    </div>
+
+    <div v-if="activeForm==='greeting'" class="pricing-header px-3 py-3 pt-md-12 pb-md-12 mx-auto text-center">
+        <h1 class="display-4">سلام {{profile.name + ' ' + profile.family}}!</h1>
+        <h1 class="display-4">به سامانه نوبت‌دهی خوش‌آمدید!</h1>
+        <p>
+            جهت دریافت نوبت، مشاهده‌ی پرونده‌ی پزشکی خود و یا مشاهده‌ی لیست نوبت‌های دریافت شده‌ی خود، گزینه‌ی مورد نظر
+            را از منوی بالا انتخاب نمایید.
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="card-deck mb-4 text-center">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal"></h4>
+                </div>
+                <div class="card-body">
+                    <div v-if="activeForm==='getTicket'" class="container">
+                        <p class="lead">درخواست نوبت</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>
+                                    <input type="radio" value="specialty" name="getTicketBy" v-model="getTicketBy"
+                                           checked>
+                                    <label>انتخاب تخصص:</label>
+                                    <select v-model="selectedItem" :disabled="getTicketBy !== 'specialty'">
+                                        <option v-for="item in specialties" :value="item.name">{{item.name}}</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="radio" value="doctor" name="getTicketBy" v-model="getTicketBy">
+                                    <label>انتخاب پزشک:</label>
+                                    <select v-model="selectedItem" :disabled="getTicketBy !== 'doctor'">
+                                        <option v-for="item in doctors" :value="item.username">{{item.name + ' ' +
+                                            item.family}}
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <Tr>
+                                <td colspan="2">
+                                    <button class="btn btn-success" v-on:click="getTicket()">دریافت نوبت</button>
+                                </td>
+                            </Tr>
+                        </table>
+                        <div v-if="newTicket">
+                            <p class="lead">نوبت دریافت شده</p>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>تاریخ</td>
+                                    <td>{{newTicket.dayOfWeek + ' ' + newTicket.date}}</td>
+                                </tr>
+                                <tr>
+                                    <td>ساعت</td>
+                                    <td>{{newTicket.time}}</td>
+                                </tr>
+                                <tr>
+                                    <td>پزشک</td>
+                                    <td>{{newTicket.doctor.fullName}}</td>
+                                </tr>
+                                <tr>
+                                    <td>تخصص</td>
+                                    <td>{{newTicket.specialties.join(', ')}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div v-if="activeForm==='myTickets'" class="container">
+                        <p class="lead">نوبت‌های من</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>تاریخ</th>
+                                <th>ساعت</th>
+                                <th>پزشک</th>
+                                <th>تخصص</th>
+                            </tr>
+                            <tr v-for="ticket in orderedMyTickets">
+                                <td>{{ticket.dayOfWeek + ' '+ticket.date}}</td>
+                                <td>{{ticket.time}}</td>
+                                <td>{{ticket.doctor.fullName}}</td>
+                                <td>{{ticket.specialties.join(', ')}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div v-if="activeForm==='myRecords'" class="container">
+                        <p class="lead">پرونده‌ی پزشکی من</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>تاریخ</th>
+                                <th>پزشک</th>
+                                <th>داروها</th>
+                                <th>آزمایش‌ها</th>
+                            </tr>
+                            <tr v-for="record in orderedMyRecords">
+                                <td>{{record.date + ' ' + record.time}}</td>
+                                <td>{{record.doctor}}</td>
+                                <td>{{record.drugs}}</td>
+                                <td>{{record.tests}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            سامانه نوبت‌دهی
+        </footer>
+    </div>
+</div>
+</body>
+</html>

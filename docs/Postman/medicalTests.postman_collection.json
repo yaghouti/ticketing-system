@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "7327d4f6-97cb-44c3-b816-3e85434360bc",
+		"name": "medicalTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create MedicalTest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"mt2\",\n\t\"fields\": [\"f1\", \"f2\", \"f4\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/medicalTests",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"medicalTests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update MedicalTest",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fields\": [\n        \"f1\",\n        \"f2\",\n        \"f6\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/medicalTests/m3",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"medicalTests",
+						"m3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read  MedicalTest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/medicalTests/m2",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"medicalTests",
+						"m2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete MedicalTest",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/medicalTests/m2",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"medicalTests",
+						"m2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete MedicalTests",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"m1\", \"m3\"]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/medicalTests",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"medicalTests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All MedicalTests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/medicalTests",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"medicalTests"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a92549f7-f597-4bfd-9e74-a58fc8a834d8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "33d5d813-38f6-4921-b600-23477a339317",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

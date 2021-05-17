@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "b28b1ec4-a12b-4430-a78d-9aa6971f44e2",
+		"name": "drugs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Drug",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"drug3\"\n}"
+				},
+				"url": {
+					"raw": "{{serverUrl}}/drugs",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"drugs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Drug",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{serverUrl}}/drugs/drug3",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"drugs",
+						"drug3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Drugs",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"drug2\", \"drug3\"]"
+				},
+				"url": {
+					"raw": "{{serverUrl}}/drugs",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"drugs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Drugs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/drugs",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"drugs"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a92549f7-f597-4bfd-9e74-a58fc8a834d8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "33d5d813-38f6-4921-b600-23477a339317",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,18 +1,15 @@
 {
-  "name": "e-health",
+  "name": "ticketing-system",
   "version": "1.0.0",
-  "description": "An electronic health management system",
+  "description": "A ticketing system for doctors and patients",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
+    "modifyingTest": "npm test",
+    "prestart": "node boot.js",
     "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yaghouti/e-health.git"
-  },
   "keywords": [
-    "health",
+    "ticketing",
     "turn",
     "visit",
     "doctors",
@@ -20,14 +17,21 @@
   ],
   "author": "Majid Yaghouti",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yaghouti/ticketing-system/issues"
-  },
-  "homepage": "https://github.com/yaghouti/ticketing-system#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "connect-redis": "^4.0.2",
+    "deasync": "^0.1.15",
     "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "jalali-moment": "^3.3.3",
     "mongodb": "^3.3.2",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "redis": "^2.8.0",
+    "redlock": "^4.0.0"
+  },
+  "devDependencies": {
+    "chai": "latest",
+    "request": "latest",
+    "mocha": "latest"
   }
 }
